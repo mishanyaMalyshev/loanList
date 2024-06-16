@@ -1,0 +1,1 @@
+ /Users/malyshev/Desktop/FLUTTER/credit_list/.dart_tool/flutter_build/1000a20f972bd3a166385f5558137301/native_assets.yaml: 
