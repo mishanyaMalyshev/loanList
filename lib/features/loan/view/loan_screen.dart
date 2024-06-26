@@ -29,38 +29,38 @@ Widget build(BuildContext context) {
         Text(
           loan?.mfo.fullName ?? '',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Image.network(
           loan?.mfo.iconUrl ?? '',
           width: 150,
           height: 100,
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Text(
           loan?.mfo.previewText ?? '',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
                   ...loan!.mfo.phones.map((phone) => ListTile(
             title: Text(
              phone.phone,
              textAlign: TextAlign.center,
-             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
              ),
             subtitle: phone.description == null 
             ? null 
             : Text(
              phone.description.toString() ,
              textAlign: TextAlign.center,
-             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
              ),
             onTap: () {
               // TODO: обработать нажатие на телефон
             },
-          )).toList()
+          ))
       ],
     ),
   );

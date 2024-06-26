@@ -17,7 +17,6 @@ class LoanListScreen extends StatefulWidget {
 }
 
 class _LoanListScreenState extends State<LoanListScreen> {
-
   final _loanListBloc = LoanListBloc(GetIt.I<AbstractLoansRepository>());
 
   @override
@@ -29,6 +28,7 @@ class _LoanListScreenState extends State<LoanListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF4F5F8),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
@@ -43,13 +43,14 @@ class _LoanListScreenState extends State<LoanListScreen> {
           bloc: _loanListBloc,
           builder: (context, state) {
             if (state is LoanListLoaded) {
-              return ListView.separated(
-                padding: const EdgeInsets.only(top: 16),
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
                 itemCount: state.loanList.length,
-                separatorBuilder: (context, index) => const Divider(),
                 itemBuilder: (context, i) {
                   final credit = state.loanList[i];
-                  return LoanTile(loan: credit);
+                  return Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: LoanTile(loan: credit));
                 },
               );
             }
@@ -60,12 +61,8 @@ class _LoanListScreenState extends State<LoanListScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Something went wrong'
-                    ),
-                    const Text(
-                      'Please try againg later'
-                    ),
+                    const Text('Something went wrong'),
+                    const Text('Please try againg later'),
                     const SizedBox(height: 30),
                     TextButton(
                       onPressed: () {
@@ -80,7 +77,7 @@ class _LoanListScreenState extends State<LoanListScreen> {
 
             return const Center(child: CircularProgressIndicator());
           },
-      ),
+        ),
       ),
     );
   }
