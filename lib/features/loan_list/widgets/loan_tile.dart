@@ -60,9 +60,9 @@ class LoanTile extends StatelessWidget {
                   const SizedBox(width: 8),
                   ActionButton(
                       onPressed: () async {
-                        final url = Uri.https('www.banki.ru');
+                        final url = Uri.parse(loan.requestURL);
                         if (await canLaunchUrl(url)) {
-                          launchUrl(url, mode: LaunchMode.externalApplication);
+                          launchUrl(url, mode: LaunchMode.inAppWebView);
                         } else {
                           // ignore: avoid_print
                           print("Can't launch $url");

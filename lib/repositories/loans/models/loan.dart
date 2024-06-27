@@ -4,25 +4,26 @@ class Loan {
   final Mfo mfo;
   final String termOfCreditString;
   final String amountString;
+  final String requestURL;
 
-  Loan({
-    required this.id,
-    required this.name,
-    required this.mfo,
-    required this.termOfCreditString,
-    required this.amountString,
-  });
+  Loan(
+      {required this.id,
+      required this.name,
+      required this.mfo,
+      required this.termOfCreditString,
+      required this.amountString,
+      required this.requestURL});
 
-    factory Loan.fromJson(Map<String, dynamic> json) {
+  factory Loan.fromJson(Map<String, dynamic> json) {
     final mfo = Mfo.fromJson(json['mfo']);
     return Loan(
-      id: json['id'],
-      name: json['name'],
-      mfo: mfo,
-      termOfCreditString: json['term_of_credit_string'],
-      amountString: json['amount_string'],
-      );
-      }
+        id: json['id'],
+        name: json['name'],
+        mfo: mfo,
+        termOfCreditString: json['term_of_credit_string'],
+        amountString: json['amount_string'],
+        requestURL: json['request_url']);
+  }
 }
 
 class Mfo {
@@ -31,6 +32,7 @@ class Mfo {
   final String fullName;
   final String iconUrl;
   final String previewText;
+
   /// сделать опциональным final String detailText;
   final List<Phone> phones;
 
@@ -43,7 +45,7 @@ class Mfo {
     required this.phones,
   });
 
-    factory Mfo.fromJson(Map<String, dynamic> json) {
+  factory Mfo.fromJson(Map<String, dynamic> json) {
     return Mfo(
       id: json['id'],
       name: json['name'],
@@ -64,7 +66,7 @@ class Phone {
     this.description,
   });
 
-    factory Phone.fromJson(Map<String, dynamic> json) => Phone(
+  factory Phone.fromJson(Map<String, dynamic> json) => Phone(
         phone: json['phone'],
         description: json['description'],
       );
